@@ -1,4 +1,4 @@
-package com.youth.moim.member.common;
+package com.youth.moim.common;
 
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;

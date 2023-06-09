@@ -1,6 +1,6 @@
 package com.youth.moim.member.application;
 
-import com.youth.moim.member.common.MemberFixture;
+import com.youth.moim.common.MemberFixture;
 import com.youth.moim.member.domain.Member;
 import com.youth.moim.member.dto.JoinOrganizerMemberRequest;
 import com.youth.moim.member.dto.JoinOrganizerMemberResponse;

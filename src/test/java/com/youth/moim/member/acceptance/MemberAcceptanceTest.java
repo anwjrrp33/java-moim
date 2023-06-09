@@ -1,7 +1,7 @@
 package com.youth.moim.member.acceptance;
 
-import com.youth.moim.member.common.AcceptanceTest;
-import com.youth.moim.member.common.MemberFixture;
+import com.youth.moim.common.AcceptanceTest;
+import com.youth.moim.common.MemberFixture;
 import com.youth.moim.member.dto.JoinOrganizerMemberRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
@@ -64,5 +64,4 @@ public class MemberAcceptanceTest extends AcceptanceTest {
     public static void 회원_생성됨(ExtractableResponse<Response> response) {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
     }
-
 }

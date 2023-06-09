@@ -1,6 +1,7 @@
 package com.youth.moim.member.domain;
 
 import jakarta.persistence.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 
@@ -34,7 +35,7 @@ public class Member {
     protected Member() {
     }
 
-    private Member(String name, LocalDate birthDate, Gender gender, String memberId, String password, String email, OrganizerInfo organizerInfo, ParticipantInfo participantInfo) {
+    private Member(Long id, String name, LocalDate birthDate, Gender gender, String memberId, String password, String email, OrganizerInfo organizerInfo, ParticipantInfo participantInfo) {
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
@@ -46,11 +47,19 @@ public class Member {
     }
 
     public static Member of(String name, LocalDate birthDate, Gender gender, String memberId, String password, String email, OrganizerInfo organizerInfo) {
-        return new Member(name, birthDate, gender, memberId, password, email, organizerInfo, null);
+        return new Member(null, name, birthDate, gender, memberId, password, email, organizerInfo, null);
+    }
+
+    public static Member of(Long id, String name, LocalDate birthDate, Gender gender, String memberId, String password, String email, OrganizerInfo organizerInfo) {
+        return new Member(id, name, birthDate, gender, memberId, password, email, organizerInfo, null);
     }
 
     public static Member of(String name, LocalDate birthDate, Gender gender, String memberId, String password, String email, ParticipantInfo participantInfo) {
-        return new Member(name, birthDate, gender, memberId, password, email, null, participantInfo);
+        return new Member(null, name, birthDate, gender, memberId, password, email, null, participantInfo);
+    }
+
+    public static Member of(Long id, String name, LocalDate birthDate, Gender gender, String memberId, String password, String email, ParticipantInfo participantInfo) {
+        return new Member(id, name, birthDate, gender, memberId, password, email, null, participantInfo);
     }
 
     public Long getId() {
@@ -91,5 +100,11 @@ public class Member {
 
     public String getInfo() {
         return participantInfo != null ? participantInfo.getInfo() : null;
+    }
+
+    public void checkPassword(PasswordEncoder passwordEncoder, String password) {
+        if (this.password.equals(passwordEncoder.encode(password))) {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
     }
 }

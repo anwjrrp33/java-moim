@@ -1,4 +1,4 @@
-package com.youth.moim.member.common;
+package com.youth.moim.common;
 
 import com.google.common.base.CaseFormat;
 import jakarta.persistence.Entity;

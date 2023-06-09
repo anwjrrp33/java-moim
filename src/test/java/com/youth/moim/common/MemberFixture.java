@@ -1,6 +1,9 @@
-package com.youth.moim.member.common;
+package com.youth.moim.common;
 
 import com.youth.moim.member.domain.Gender;
+import com.youth.moim.member.domain.Member;
+import com.youth.moim.member.domain.OrganizerInfo;
+import com.youth.moim.member.domain.ParticipantInfo;
 import com.youth.moim.member.dto.JoinOrganizerMemberRequest;
 import com.youth.moim.member.dto.JoinParticipantMemberRequest;
 
@@ -23,8 +26,16 @@ public class MemberFixture {
             LocalDate.of(1990, 5, 15),
             Gender.MALE,
             "john123",
-            "pass123",
+            "{bcrypt}$2a$10$5Cp6s.Z1SfZ//7WkZmfGkOkuzzOZSNrejd124tvDxn8vOuyAXVbLK",
             "john.doe@example.com",
             "계란",
             "안녕하세요 :)");
+
+    public static final Member organizerInfoMember = Member.of(1L, "John Doe",
+            LocalDate.of(1990, 5, 15),
+            Gender.MALE,
+            "john123",
+            "{bcrypt}$2a$10$5Cp6s.Z1SfZ//7WkZmfGkOkuzzOZSNrejd124tvDxn8vOuyAXVbLK",
+            "john.doe@example.com",
+            new OrganizerInfo("Team A"));
 }
